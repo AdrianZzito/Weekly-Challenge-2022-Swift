@@ -18,19 +18,23 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+func ohm(V: Double? = nil, R: Double? = nil, I: Double? = nil) -> String {
+    
+    // Calculo Intensidad
+    if let V, let R, I == nil {
+        return "I = \(V * R)"
 
-// V = R * I
-func ohm(v: Double? = nil, r: Double? = nil, i: Double? = nil) -> String {
+    // Calculo Resistencia
+    } else  if let V, let I, R == nil {
+        return "R = \(String(format: "%.2f", V / I))"
 
-    if let v, let r, i == nil {
-        return "I = \(String(format: "%.2f", v / r))"
-    } else if let v, let i, r == nil {
-        return "R = \(String(format: "%.2f", v / i))"
-    } else if let r, let i, v == nil {
-        return "V = \(String(format: "%.2f", r * i))"
+    // Calculo Voltaje
+    } else if let I, let R, V == nil {
+        return "V = \(R / I)"
     }
 
     return "Invalid values"
+
 }
 
 print(ohm())
